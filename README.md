@@ -21,7 +21,7 @@ python Train_CS_ISTA_Net_plus_36.py --matrix_dir lf/myphi --model_dir lf/model -
 ```
 
 Requirements:
-- GPU > 10GB
+- GPU > 10GB, e.g. RTX2080Ti
 
 Environment:
 - Pytorch 1.8
