@@ -138,7 +138,7 @@ with torch.no_grad():
         lf_YCrCb = cv2.cvtColor(lf_rgb, cv2.COLOR_RGB2YCrCb)
         lf = lf_YCrCb[:,:,0].copy()
         lf = np.transpose(lf.reshape(4,504,4,504), axes=[1,3,0,2])
-        print(lf.shape)
+        # print(lf.shape)
         lf_col = np.zeros((3136, 1296))
         for k, (i, j) in enumerate(product(range(0,504,9), range(0,504,9))):
             lf_col[k] = lf[i:i+9,j:j+9,:,:].flatten()
@@ -196,6 +196,7 @@ with torch.no_grad():
         ## free memory
         del x_output
         del loss_layers_sym
+        del lf_rgb
         gc.collect()
         
         

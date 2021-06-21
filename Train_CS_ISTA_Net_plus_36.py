@@ -13,6 +13,7 @@ from time import time
 from ista_net_plus_36 import ISTANetplus
 from logger import Logger
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 parser = ArgumentParser(description='ISTA-Net-plus')
 
@@ -45,6 +46,7 @@ gpu_list = args.gpu_list
 # redirect output to file
 log_file_name = "./%s/Log_CS_ISTA_Net_plus_layer_%d_group_%d_ratio_%d_lr_%.4f.txt" % (
     args.log_dir, layer_num, group_num, cs_ratio, learning_rate)
+Path(args.log_dir).mkdir(parents=True, exist_ok=True)
 logger = Logger(log_file_name)
 sys.stdout = logger
 logger.stop()

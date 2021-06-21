@@ -2,6 +2,7 @@ import torch
 from torch import nn
 from torch.nn import init
 import torch.nn.functional as F
+import gc
 
 # Define ISTA-Net-plus Block
 class BasicBlock(torch.nn.Module):
@@ -77,11 +78,6 @@ class ISTANetplus(torch.nn.Module):
         PhiTPhi = torch.mm(torch.transpose(Phi, 0, 1), Phi)
         PhiTb = torch.mm(Phix, Phi)
         
-        # print('Phi:')
-        # print(Phi)
-        # print('PhiTPhi:')
-        # print(PhiTPhi)
-
         x = torch.mm(Phix, torch.transpose(Qinit, 0, 1))
 
         layers_sym = []  # for computing symmetric loss
@@ -89,12 +85,7 @@ class ISTANetplus(torch.nn.Module):
         for i in range(self.LayerNo):
             [x, layer_sym] = self.fcs[i](x, PhiTPhi, PhiTb)
             layers_sym.append(layer_sym)
-            # print('layer {}:'.format(i))
-            # print('x:')
-            # print(x)
-            # print('sym:')
-            # print(layer_sym)
-            # print('')
+            gc.collect()
 
         x_final = x
 
