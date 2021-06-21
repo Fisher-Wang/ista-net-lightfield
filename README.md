@@ -6,7 +6,7 @@
 
 To test the network, run: 
 ```python
-TEST_CS_ISTA_Net_plus_36_rgb.py --matrix_dir lf/myphi --model_dir lf/model --data_dir lf/mytrain --log_dir lf/log --layer_num 9 --data_dir lf/mytest --result_dir lf/result --cs_ratio 25
+python TEST_CS_ISTA_Net_plus_36_rgb.py --matrix_dir lf/myphi --model_dir lf/model --data_dir lf/mytrain --log_dir lf/log --layer_num 9 --data_dir lf/mytest --result_dir lf/result --cs_ratio 25
 ```
 you can set `cs_ratio` to 4, 25, 40, 50
 
